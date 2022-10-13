@@ -206,6 +206,15 @@ TBitField TBitField::operator~(void) // отрицание
 
 istream& operator>>(istream& istr, TBitField& bf) // ввод
 {
+    TELEM tmp = 0;
+
+    for (size_t i = 0; i < bf.BitLen; ++i) {
+        istr >> tmp;
+        if (tmp == 1) {
+            bf.SetBit(i);
+        }
+    }
+
     return istr;
 }
 
